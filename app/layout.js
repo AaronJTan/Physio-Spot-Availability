@@ -1,6 +1,7 @@
 import Navbar from '@/components/navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import SiteFooter from '@/components/site-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
 
           <main className="flex-1">{children}</main>
 
+          <SiteFooter />
         </div>
       </body>
     </html>
