@@ -1,13 +1,6 @@
 import { physiotherapists } from "@/config/physiotherapists";
-import { useState } from "react";
 
 export default function PTSelect({selectedPTId, onSelectPT}) {
-    // const handlePTSelect = (e) => {
-    //     onSelectPT(e.target.value);
-    //     const availDays = temp(date.getMonth() + 1, e.target.value);
-    //     setData(availDays)
-    // }
-
     return (
         <div>
             <label>Viewing available bookings for: </label>
