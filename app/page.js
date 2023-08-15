@@ -1,5 +1,6 @@
 "use client"
 
+import { api } from "@/client-side-api/fetchData";
 import AvailableTimeSlots from "@/components/available-timeslots";
 import Calendar from "@/components/calendar/calendar";
 import PTSelect from "@/components/pt-select";
@@ -21,8 +22,7 @@ export default function Home() {
     }
 
     const getPTAvailableDaysForMonth = async () =>  {
-      let res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${currCalendar.getMonth() + 1}`);
-      let data = await res.json();
+      const data = await api.fetchPTAvailableDaysForMonth(selectedPTId, currCalendar.getMonth() + 1)
       setAvailableDays(data);
     }
 
@@ -40,8 +40,7 @@ export default function Home() {
     selectedDay.setDate(day);
     setSelectedDate(selectedDay);
 
-    let res = await fetch(`/api/bookings/time_slots?practitioner_id=${selectedPTId}&date=${selectedDay.toLocaleDateString()}`);
-    let data = await res.json();
+    const data = await api.fetchPTAvailableTimesOnDay(selectedPTId, selectedDay.toLocaleDateString());
     setAvailableTimes(data);
   }
 
