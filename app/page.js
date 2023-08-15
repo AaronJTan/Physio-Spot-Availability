@@ -19,10 +19,9 @@ export default function Home() {
     setSelectedDate(null);
 
     async function getPTAvailableDaysForMonth() {
-      fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${currCalendar.getMonth() + 1}`)
-        .then((res) => res.json())
-        .then((data) => setAvailableDays(data))
-        .catch((err) => console.log(err));
+      let res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${currCalendar.getMonth() + 1}`);
+      let data = await res.json();
+      setAvailableDays(data);
     }
 
     getPTAvailableDaysForMonth();
@@ -39,10 +38,9 @@ export default function Home() {
     selectedDay.setDate(day);
     setSelectedDate(selectedDay);
 
-    fetch(`/api/bookings/time_slots?practitioner_id=${selectedPTId}&date=${selectedDay.toLocaleDateString()}`)
-      .then((res) => res.json())
-      .then((data) => setAvailableTimes(data))
-      .catch((err) => console.log(err));
+    let res = await fetch(`/api/bookings/time_slots?practitioner_id=${selectedPTId}&date=${selectedDay.toLocaleDateString()}`);
+    let data = await res.json();
+    setAvailableTimes(data);
   }
 
   return (
