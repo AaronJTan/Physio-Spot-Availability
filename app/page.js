@@ -29,7 +29,6 @@ export default function Home() {
 
   const handlePTSelect = (PTId) => {
     setSelectedPTtId(PTId);
-    setCurrCalendar(new Date());
     setSelectedDate();
   }
 
