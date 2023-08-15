@@ -14,16 +14,19 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState();
 
   useEffect(() => {
-    setAvailableDays([]);
-    setAvailableTimes([]);
-    setSelectedDate(null);
+    const resetCalendarAndAvailableTimes = () => {
+      setAvailableDays([]);
+      setAvailableTimes([]);
+      setSelectedDate(null);
+    }
 
-    async function getPTAvailableDaysForMonth() {
+    const getPTAvailableDaysForMonth = async () =>  {
       let res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${currCalendar.getMonth() + 1}`);
       let data = await res.json();
       setAvailableDays(data);
     }
 
+    resetCalendarAndAvailableTimes();
     getPTAvailableDaysForMonth();
   }, [selectedPTId, currCalendar])
 
