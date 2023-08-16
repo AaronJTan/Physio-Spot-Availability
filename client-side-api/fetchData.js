@@ -1,11 +1,30 @@
 export const api = {
     fetchPTAvailableDaysForMonth: async (selectedPTId, month) => {
-        const res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${month}`);
-        return res.json();
+        try {
+            const res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${month}`);
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error)
+            }
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
     },
 
     fetchPTAvailableTimesOnDay: async (selectedPTId, date) => {
-        const res = await fetch(`/api/bookings/time_slots?practitioner_id=${selectedPTId}&date=${date}`);
-        return res.json();
+        try {
+            const res = await fetch(`/api/bookings/time_slots?practitioner_id=${selectedPTId}&date=${date}`);
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.error)
+            }
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
     }
 }

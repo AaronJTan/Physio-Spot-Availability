@@ -13,6 +13,7 @@ export default function Home() {
   const [currCalendar, setCurrCalendar] = useState(new Date());
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedDate, setSelectedDate] = useState();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const resetCalendarAndAvailableTimes = () => {
@@ -22,8 +23,12 @@ export default function Home() {
     }
 
     const getPTAvailableDaysForMonth = async () =>  {
-      const data = await api.fetchPTAvailableDaysForMonth(selectedPTId, currCalendar.getMonth() + 1)
-      setAvailableDays(data);
+      try {
+        const data = await api.fetchPTAvailableDaysForMonth(selectedPTId, currCalendar.getMonth() + 1)
+        setAvailableDays(data);
+      } catch (error) {
+        setError(true);
+      }
     }
 
     resetCalendarAndAvailableTimes();
@@ -40,8 +45,22 @@ export default function Home() {
     selectedDay.setDate(day);
     setSelectedDate(selectedDay);
 
-    const data = await api.fetchPTAvailableTimesOnDay(selectedPTId, selectedDay.toLocaleDateString());
-    setAvailableTimes(data);
+    try {
+      const data = await api.fetchPTAvailableTimesOnDay(selectedPTId, selectedDay.toLocaleDateString());
+      setAvailableTimes(data);
+    } catch (error) {
+      setError(true);
+    }
+  }
+
+  if (error) {
+    return (
+        <div className="container p-4">
+          Sorry, we were unable to fetch data from the external service.
+          <br />
+          Please try again later.
+        </div>
+    );
   }
 
   return (
