@@ -1,3 +1,29 @@
+# The Physio Spot Appointment Availability
+**Disclaimer**: This website is not affiliated with The Physio Spot.
+
+## Description
+A web application to easily view available physiotherapy follow up appointments at The Physio Spot Markham branch.
+
+This application eliminates the the multi page process of selecting a branch, service, and physiotherapist. Enjoy effortless switching between physiotherapists without the requirement to navigate back and forth between pages.
+
+
+## Built With
+* [![Next][Next.js]][Next-url]
+* [![Tailwind][Tailwind CSS]][Tailwind-url]
+
+<div align="center">
+    <img src="README_images/app-screenshot.png" alt="Application Preview" height="400">
+</div>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+
+[Tailwind CSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Tailwind-url]: https://tailwindcss.com/
+
+
+<!-- ORIGINAL -->
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
