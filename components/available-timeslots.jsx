@@ -13,6 +13,8 @@ export default function AvailableTimeSlots({ timeslots, selectedDate }) {
         groupedApptByDay[dayPart].push(appointment);
     });
 
+    console.log(groupedApptByDay)
+
     const dayPartSlots = (group) => {
         if (group) {
             return group.map((item) => {
@@ -33,7 +35,7 @@ export default function AvailableTimeSlots({ timeslots, selectedDate }) {
     const availableTimes = (
         <div className="grid grid-cols-3">
             {Object.keys(groupedApptByDay).map(dayPart => (
-                <div key={dayPart}>
+                <div key={dayPart} className={`col-start-${dayPart}`}>
                     {dayPartSlots(groupedApptByDay[dayPart])}
                 </div>
             ))}
