@@ -1,7 +1,7 @@
 export const api = {
-    fetchPTAvailableDaysForMonth: async (selectedPTId, month) => {
+    fetchPTAvailableDaysForMonth: async (selectedPTId, dateObj) => {
         try {
-            const res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${month}`);
+            const res = await fetch(`/api/bookings/days?practitioner_id=${selectedPTId}&month=${dateObj.getMonth() + 1}&year=${dateObj.getFullYear()}`);
             const data = await res.json();
 
             if (!res.ok) {

@@ -2,14 +2,14 @@ const baseUrl = 'https://romano-sulit-physiotherapy-consulting.cliniko.com';
 const appointmentTypeId = '207246';
 const businessId = '48930';
 
-export function getAvailableDaysUrl(month, physiotherapistId) {
+export function getAvailableDaysUrl(month, year, physiotherapistId) {
     const params = new URLSearchParams();
     params.append('appointment_type_id', appointmentTypeId)
     params.append('business_id', businessId)
     params.append('month', month)
     params.append('practitioner_ids', physiotherapistId)
 
-    const year = getYearOfGivenMonth(month);
+    // const year = getYearOfGivenMonth(month);
 
     params.append('year', year)
     return `${baseUrl}/bookings/days?${params.toString()}`;

@@ -24,7 +24,7 @@ export default function Home() {
 
     const getPTAvailableDaysForMonth = async () =>  {
       try {
-        const data = await api.fetchPTAvailableDaysForMonth(selectedPTId, currCalendar.getMonth() + 1)
+        const data = await api.fetchPTAvailableDaysForMonth(selectedPTId, currCalendar)
         setAvailableDays(data);
       } catch (error) {
         setError(true);

@@ -5,15 +5,16 @@ import { missingParamsResponse } from "../../utils";
 export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const month = searchParams.get('month')
+    const year = searchParams.get('year')
     const practitionerId = searchParams.get('practitioner_id')
 
-    const missingParams = checkMissingQueryParams({ month, practitionerId });
+    const missingParams = checkMissingQueryParams({ month, practitionerId, year });
 
     if (missingParams.length > 0) {
         return missingParamsResponse(missingParams);
     }
 
-    const url = getAvailableDaysUrl(month, practitionerId);
+    const url = getAvailableDaysUrl(month, year, practitionerId);
 
     try {
         const res = await fetch(url);
@@ -38,6 +39,9 @@ function checkMissingQueryParams(params) {
     }
     if (!params.practitionerId) {
         missingParams.push("practitioner_id");
+    }
+    if (!params.year) {
+        missingParams.push("year");
     }
 
     return missingParams;

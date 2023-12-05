@@ -61,7 +61,7 @@ export default function Calendar({ availableDays, currCalendar, setCurrCalendar,
                 </div>
                 <button
                     className="col-span-1 next-month-btn bg-slate-200 disabled:opacity-0"
-                    disabled={currCalendar.getMonth() == new Date().getMonth() + 2}
+                    disabled={currCalendar.getMonth() == (new Date().getMonth() + 2) % 12}
                     type="button"
                     onClick={handleNextMonthClick}
                 >
